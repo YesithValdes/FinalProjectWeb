@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <persistence-unit name="com.mycompany_FinalProjectWeb_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.mycompany.finalprojectweb.persistence.entities.Borrowers</class>
+    <class>com.mycompany.finalprojectweb.persistence.entities.BookEditorial</class>
+    <class>com.mycompany.finalprojectweb.persistence.entities.Authors</class>
+    <class>com.mycompany.finalprojectweb.persistence.entities.Editorial</class>
+    <class>com.mycompany.finalprojectweb.persistence.entities.AuthorEditorial</class>
+    <class>com.mycompany.finalprojectweb.persistence.entities.Users</class>
+    <class>com.mycompany.finalprojectweb.persistence.entities.Books</class>
+    <class>entities.Borrowers</class>
+    <class>entities.BookEditorial</class>
+    <class>entities.AuthorEditorial</class>
+    <class>entities.Editorial</class>
+    <class>entities.Books</class>
+    <class>entities.Users</class>
+    <class>entities.Authors</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/library_db?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>
