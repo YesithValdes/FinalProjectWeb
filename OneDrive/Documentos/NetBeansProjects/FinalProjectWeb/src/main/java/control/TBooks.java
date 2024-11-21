@@ -31,6 +31,8 @@ public class TBooks extends HttpServlet {
     public void init() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_FinalProjectWeb_war_1.0-SNAPSHOTPU");
         booksController = new BooksJpaController(emf);
+        
+        System.out.println("Hello man");
     }
 
     @Override

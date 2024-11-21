@@ -3,7 +3,7 @@
     Created on : 20/11/2024, 10:05:00 p. m.
     Author     : Alexis
 --%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ page import="entities.Users" %>
@@ -21,6 +21,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* Ancho fijo para columnas */
+        }
+
+        thead {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            background-color: #f8f9fa; /* Color del encabezado */
+            position: sticky; /* Fija el encabezado */
+            top: 0;
+            z-index: 1;
+        }
+
+        .scrollable-tbody {
+            display: block;
+            max-height: 150px; /* Define la altura del área desplazable */
+            overflow-y: auto;
+            width: 100%;
+        }
+
+        .scrollable-tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #dee2e6;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -54,7 +90,7 @@
                     <th>Opciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="scrollable-tbody">
                 <c:forEach var="book" items="${books}">
                     <tr>
                         <td>${book.title}</td>
@@ -64,12 +100,20 @@
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="book_id" value="${book.bookId}">
                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                
                             </form>
+                                <a href="EditBookServlet?book_id=${book.bookId}" class="btn btn-warning btn-sm">Editar</a>
+                            
                         </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
+        <div class="container text-center">
+        <a id="btnConsulta1" class="btn btn-primary mr-2">Autores y Editoriales</a>
+        <a id="btnConsulta2" class="btn btn-primary">Libros prestados y Prestatarios</a>
+        <a id="btnConsulta3" class="btn btn-primary">Libros, Editoriales y Autores</a>
+    </div>
     </section>
 </body>
 </html>

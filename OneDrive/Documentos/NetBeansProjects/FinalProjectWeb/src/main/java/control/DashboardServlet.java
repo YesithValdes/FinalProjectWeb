@@ -21,23 +21,27 @@ public class DashboardServlet extends HttpServlet {
     public void init() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_FinalProjectWeb_war_1.0-SNAPSHOTPU");
         booksController = new BooksJpaController(emf);
+        System.out.println("----------------------------");
+        System.out.println("----------------------------");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Recupera los libros desde la base de datos
-    List<Books> books = booksController.findBooksEntities();
+        List<Books> books = booksController.findBooksEntities();
 
-    
-    // Verifica si la lista está vacía
-    if (books.isEmpty()) {
-        System.out.println("No se encontraron libros en la base de datos.");
-    }
+        // Pasa los libros al JSP
+        request.setAttribute("books", books);
+        
+        
+        
+        for (Books book : books) {
+            System.out.println("Libro: "+book.getTitle());
+        }
 
-    // Pasa los libros al JSP
-    request.setAttribute("books", books);
-    request.getRequestDispatcher("dashboard.jsp").forward(request, response);
+        // Redirige al dashboard.jsp
+        request.getRequestDispatcher("dashboard.jsp").forward(request, response);
     }
 
     @Override

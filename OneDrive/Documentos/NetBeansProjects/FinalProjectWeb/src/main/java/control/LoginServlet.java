@@ -36,7 +36,8 @@ public class LoginServlet extends HttpServlet {
             // Usuario autenticado, crea la sesión
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("dashboard.jsp"); // Redirige al panel de control
+            response.sendRedirect("DashboardServlet");
+            //response.sendRedirect("dashboard.jsp"); // Redirige al panel de control
         } else {
             // Usuario o contraseña incorrectos
             request.setAttribute("errorMessage", "Usuario o contraseña incorrectos.");
